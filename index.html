@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Process Flow</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff; /* White background color */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px; /* Increased gap for more space between steps */
+            justify-items: center;
+            align-items: center;
+            max-width: 800px; /* Adjust for better spacing */
+            padding: 20px;
+            border: 3px solid #000000; /* Added border around the container */
+            border-radius: 10px; /* Slight border radius for rounded edges */
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: step-animation 1s forwards, step-repeat 8s infinite;
+        }
+
+        .step:nth-child(1) { animation-delay: 0s, 8s; }
+        .step:nth-child(2) { animation-delay: 1s, 9s; }
+        .step:nth-child(3) { animation-delay: 2s, 10s; }
+        .step:nth-child(4) { animation-delay: 3s, 11s; }
+        .step:nth-child(5) { animation-delay: 4s, 12s; }
+        .step:nth-child(6) { animation-delay: 5s, 13s; }
+        .step:nth-child(7) { animation-delay: 6s, 14s; }
+        .step:nth-child(8) { animation-delay: 7s, 15s; }
+
+        .animated-icon {
+            font-size: 50px;
+            color: #00bfff; /* Bright color for icons */
+            position: relative;
+            animation: icon-bounce 1s infinite alternate, icon-glow 2s infinite;
+        }
+
+        .radiation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(0, 191, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: radiation-animation 1.5s infinite;
+            z-index: -1;
+        }
+
+        .step p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333333; /* Dark grey color for text */
+        }
+
+        .arrow {
+            font-size: 30px; /* Increased arrow size */
+            color: #8B0000; /* Dark red color for arrows */
+            position: absolute;
+            z-index: 0;
+            opacity: 0;
+            animation: arrow-animation 1.5s infinite;
+            font-weight: bold; /* Increased weight of the arrows */
+        }
+
+        .arrow-forward {
+            top: 30%;
+            left: 100%;
+            transform: translateX(-50%);
+            animation: arrow-animation-forward 1s forwards;
+        }
+
+        .arrow-downward {
+            top: 100%;
+            left: 50%;
+            transform: translateY(-50%);
+            animation: arrow-animation-downward 1s forwards;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+                gap: 20px; /* Adjust gap for smaller screens */
+            }
+
+            .animated-icon {
+                font-size: 40px;
+            }
+
+            .step p {
+                font-size: 14px;
+            }
+
+            .arrow {
+                font-size: 24px;
+            }
+        }
+
+        @keyframes step-animation {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes step-repeat {
+            0%, 90% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes arrow-animation-forward {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes arrow-animation-downward {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes arrow-animation {
+            0%, 90% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+        }
+
+        @keyframes icon-bounce {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes icon-glow {
+            0% {
+                box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 191, 255, 1);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+            }
+        }
+
+        @keyframes radiation-animation {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 120px;
+                height: 120px;
+                opacity: 0;
+            }
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #8B0000; /* Dark red color for button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            background-color: #a50000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="animation-container">
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">search</i>
+            <p>1. Analysis</p>
+            <i class="material-icons arrow arrow-forward">arrow_forward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">event_note</i>
+            <p>2. Plan</p>
+            <i class="material-icons arrow arrow-forward">arrow_forward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">brush</i>
+            <p>3. Design</p>
+            <i class="material-icons arrow arrow-forward">arrow_forward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">code</i>
+            <p>4. Develop</p>
+            <i class="material-icons arrow arrow-downward">arrow_downward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">devices</i>
+            <p>5. Responsive</p>
+            <i class="material-icons arrow arrow-forward">arrow_forward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">developer_mode</i>
+            <p>6. Cross Browser</p>
+            <i class="material-icons arrow arrow-forward">arrow_forward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">done_all</i>
+            <p>7. Final Test</p>
+            <i class="material-icons arrow arrow-forward">arrow_forward</i>
+        </div>
+        <div class="step">
+            <div class="radiation"></div>
+            <i class="material-icons animated-icon">rocket_launch</i>
+            <p>8. Launch</p>
+        </div>
+    </div>
+    <button class="download-btn" onclick="downloadGIF()">Download as GIF</button>
+    <button class="download-btn" onclick="downloadVideo()">Download as Video</button>
+
+    <script>
+        function downloadGIF() {
+            const gif = new GIF({
+                workers: 2,
+                quality: 10
+            });
+
+            const container = document.getElementById('animation-container');
+            const steps = container.querySelectorAll('.step');
+            
+            steps.forEach(step => {
+                gif.addFrame(step, {copy: true, delay: 1000});
+            });
+
+            gif.on('finished', function(blob) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'process_flow.gif';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            gif.render();
+        }
+
+        function downloadVideo() {
+            // Implementation of video download logic
+            // This requires more advanced setup usually involving server-side processing
+            alert("Video download functionality to be implemented.");
+        }
+    </script>
+</body>
+</html>
